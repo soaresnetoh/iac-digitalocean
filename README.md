@@ -27,3 +27,20 @@ cp kube_config.yaml ~/.kube/config
 
 kubectl get nodes
 ```
+
+aplique o manifesto da aplicação
+```bash
+kubectl apply -f kube-news/k8s/deployment.yaml
+```
+
+Tudo Ok
+
+=========================================
+
+destrua tudo !!!! (se quiser é claro)
+
+
+```bash
+kubectl delete -f kube-news/k8s/deployment.yaml
+terraform destroy
+```
