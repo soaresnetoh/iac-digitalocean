@@ -22,8 +22,8 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3.0.0
         with:
-          file: ./iac-digitalocean/iac/kube-news/src/Dockerfile
-          context: ./iac-digitalocean/iac/kube-news/src
+          file: ./iac/kube-news/src/Dockerfile
+          context: ./iac/kube-news/src
           push: true
           tags: |
             hernanisoares/kube-news:latest
