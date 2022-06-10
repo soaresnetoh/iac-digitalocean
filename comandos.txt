@@ -31,3 +31,32 @@ colocar annotations para o prometheus pegar as metricas dos providers
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
         prometheus.io/path: "/metrics"
+
+
+https://prometheus.io/docs/prometheus/latest/querying/basics/
+
+https://prometheus.io/docs/prometheus/latest/querying/examples/
+
+filtro promql
+
+http_requests_total{method="POST|PUT"}
+http_requests_total{method=~"POST|PUT"}
+http_requests_total{method!~"POST|PUT"}
+
+http_requests_total[2m]
+
+
+rate(http_requests_total{job="api-server"}[5m])
+rate(http_requests_total[2m])
+
+sum(rate(http_requests_total[2m]))
+
+sum(rate(http_requests_total[2m])) by (method)
+
+
+grafana.com
+
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+helm upgrade --install grafana grafana/grafana --set service.type=LoadBalancer
