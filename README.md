@@ -44,3 +44,14 @@ destrua tudo !!!! (se quiser é claro)
 kubectl delete -f kube-news/k8s/deployment.yaml
 terraform destroy
 ```
+
+
+===================================
+
+Para rodar no Github Actions, mantenha seu cluster no ar e crie as secrets no Github
+
+```
+DOCKERHUB_PWD
+DOCKERHUB_USER
+K8S_CONFIG
+```
