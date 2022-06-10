@@ -29,3 +29,20 @@ jobs:
             hernanisoares/kube-news:latest
             hernanisoares/kube-news:${{github.run_number}}
             
+  CD:
+    runs-on: ubuntu-latest
+    needs: [CI]
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secret.K8S_CONFIG }}
+          
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v3.1
+        with:
+          images: hernanisoares/kube-news:${{github.run_number}}
+          manifests: ./iac/kube-news/k8s/deployment.yaml
